@@ -1,6 +1,14 @@
 {
   "name": "react-app-rewire-typescript-babel-preset",
+  "homepage": "https://github.com/strothj/react-app-rewire-typescript-babel-preset",
   "version": "1.0.0",
+  "keywords": [
+    "react",
+    "react-scripts",
+    "react-app-rewired",
+    "typescript",
+    "babel"
+  ],
   "main": "index.js",
   "license": "MIT",
   "scripts": {

@@ -1,10 +1,14 @@
 // const rewireTypescript = require("react-app-rewire-typescript-babel-preset");
-const rewireTypescript = require("../");
+const {
+  rewireWebpack: rewireTypescript,
+  rewireJest: rewireTypescriptJest
+} = require("../");
 
-module.exports = function override(baseConfig, env) {
-  let config = baseConfig;
-
-  config = rewireTypescript(config, env);
-
-  return config;
+module.exports = {
+  webpack: function(config, env) {
+    return rewireTypescript(config);
+  },
+  jest: function(config) {
+    return rewireTypescriptJest(config);
+  }
 };

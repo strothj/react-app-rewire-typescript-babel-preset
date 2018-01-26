@@ -10,17 +10,6 @@ const removeFlowPreset = (...args) => {
   );
   preset.presets.push("@babel/preset-typescript");
 
-  preset.plugins.push([
-    "@babel/plugin-transform-modules-commonjs",
-    { noInterop: true }
-  ]);
-
-  // Setting noInterop to true disables behavior where Babel creates synthetic
-  // default exports. Setting this to match expected TypeScript behavior.
-  // babelLoader.options.plugins = babelLoader.options.plugins || [];
-  // babelLoader.options.plugins.push([
-  // ]);
-
   return preset;
 };
 

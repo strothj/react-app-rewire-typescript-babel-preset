@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "lscache": "^1.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "2.0.0-next.9754a231"
@@ -28,6 +29,8 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.0.0-beta.38",
+    "@types/jest": "^22.1.0",
+    "@types/lscache": "^1.0.29",
     "@types/react": "^16.0.35",
     "@types/react-dom": "^16.0.3",
     "react-app-rewired": "^1.4.0"

@@ -24,14 +24,19 @@ const presetReactAppPath = path.resolve(
   "node_modules/babel-preset-react-app"
 );
 
+const babelJestPath = path.resolve(projectDirectory, "node_modules/babel-jest");
+
 const reactScriptsPathsModule = require(reactScriptsPathsModulePath);
 
 const reactAppRequired = require(reactAppRewiredModulePath);
 
 const presetReactApp = require(presetReactAppPath);
 
+const babelJest = require(babelJestPath);
+
 module.exports = {
   reactScriptsPathsModule,
   reactAppRequired,
-  presetReactApp
+  presetReactApp,
+  babelJest
 };

@@ -598,6 +598,14 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@types/jest@^22.1.0":
+  version "22.1.0"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-22.1.0.tgz#c1de03bbac66fac4cc741f7a69cb73bc01a1707c"
+
+"@types/lscache@^1.0.29":
+  version "1.0.29"
+  resolved "https://registry.yarnpkg.com/@types/lscache/-/lscache-1.0.29.tgz#068a8acca8668c0a2b5d5dcb2800fa334c7b1f60"
+
 "@types/node@*":
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.3.0.tgz#3a129cda7c4e5df2409702626892cb4b96546dd5"
@@ -2351,8 +2359,8 @@ dom-urls@^1.1.0:
     urijs "^1.16.1"
 
 domain-browser@^1.1.1:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.1.7.tgz#867aa4b093faa05f1de08c06f4d7b21fdf8698bc"
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.2.0.tgz#3d31f50191a6749dd1375a7f522e823d42e54eda"
 
 domelementtype@1:
   version "1.3.0"
@@ -4815,6 +4823,10 @@ lru-cache@^4.0.1, lru-cache@^4.1.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
+lscache@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/lscache/-/lscache-1.1.0.tgz#cbcf2df9ccf634f3c8f9c659bcbe044d6f73b860"
+
 macaddress@^0.2.8:
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/macaddress/-/macaddress-0.2.8.tgz#5904dc537c39ec6dbefeae902327135fa8511f12"
@@ -6393,8 +6405,8 @@ regexpu-core@^4.1.3:
     unicode-match-property-value-ecmascript "^1.0.1"
 
 registry-auth-token@^3.0.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/registry-auth-token/-/registry-auth-token-3.3.1.tgz#fb0d3289ee0d9ada2cbb52af5dfe66cb070d3006"
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/registry-auth-token/-/registry-auth-token-3.3.2.tgz#851fd49038eecb586911115af845260eec983f20"
   dependencies:
     rc "^1.1.6"
     safe-buffer "^5.0.1"

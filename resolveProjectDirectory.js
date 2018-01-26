@@ -1,4 +1,3 @@
-const fs = require("fs");
 const wrapError = require("./wrapError");
 
 /**
@@ -8,7 +7,7 @@ const wrapError = require("./wrapError");
  * cache. During Webpack's loading of the Babel loader, @babel modules will be
  * available.
  *
- * We determine the project direction using the module cache to allow for easier
+ * We determine the project directory using the module cache to allow for easier
  * testing from the project in the example directory.
  */
 const resolveProjectDirectory = () => {
@@ -27,8 +26,7 @@ const resolveProjectDirectory = () => {
   const match = moduleCacheKeyTargetRegex.exec(matchedModuleKey);
   const projectDirectory = matchedModuleKey.substring(0, match.index);
 
-  // Using fs.realpathSync to prevent issues surrounding symlinks.
-  return fs.realpathSync(projectDirectory);
+  return projectDirectory;
 };
 
 module.exports = resolveProjectDirectory;

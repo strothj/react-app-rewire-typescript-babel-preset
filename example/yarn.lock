@@ -266,6 +266,10 @@
   version "7.0.0-beta.38"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-optional-catch-binding/-/plugin-syntax-optional-catch-binding-7.0.0-beta.38.tgz#99248ece1c5c6111d71182e206682048d93759e4"
 
+"@babel/plugin-syntax-typescript@7.0.0-beta.38":
+  version "7.0.0-beta.38"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-typescript/-/plugin-syntax-typescript-7.0.0-beta.38.tgz#c62b1148da53a071ac8e8013797d2783eefab631"
+
 "@babel/plugin-transform-arrow-functions@7.0.0-beta.38":
   version "7.0.0-beta.38"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-arrow-functions/-/plugin-transform-arrow-functions-7.0.0-beta.38.tgz#fa52742f2bf664ed0d56a5015b330880fa6646ef"
@@ -448,6 +452,12 @@
   version "7.0.0-beta.38"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-typeof-symbol/-/plugin-transform-typeof-symbol-7.0.0-beta.38.tgz#f390a9c6c79c36cf7bf2c9f818ffd52c05a92a59"
 
+"@babel/plugin-transform-typescript@7.0.0-beta.38":
+  version "7.0.0-beta.38"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-typescript/-/plugin-transform-typescript-7.0.0-beta.38.tgz#ff08fdcef11dc76915b7194524503b17820bf95c"
+  dependencies:
+    "@babel/plugin-syntax-typescript" "7.0.0-beta.38"
+
 "@babel/plugin-transform-unicode-regex@7.0.0-beta.38":
   version "7.0.0-beta.38"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-unicode-regex/-/plugin-transform-unicode-regex-7.0.0-beta.38.tgz#304f7cb14bb09dcf7ecd66ec2db780c209d4aeec"
@@ -513,6 +523,12 @@
     "@babel/plugin-transform-react-jsx" "7.0.0-beta.38"
     "@babel/plugin-transform-react-jsx-self" "7.0.0-beta.38"
     "@babel/plugin-transform-react-jsx-source" "7.0.0-beta.38"
+
+"@babel/preset-typescript@^7.0.0-beta.38":
+  version "7.0.0-beta.38"
+  resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.0.0-beta.38.tgz#3c46ad5129db53ea4a62186a59695d4343898149"
+  dependencies:
+    "@babel/plugin-transform-typescript" "7.0.0-beta.38"
 
 "@babel/runtime@7.0.0-beta.38":
   version "7.0.0-beta.38"
@@ -585,6 +601,17 @@
 "@types/node@*":
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.3.0.tgz#3a129cda7c4e5df2409702626892cb4b96546dd5"
+
+"@types/react-dom@^16.0.3":
+  version "16.0.3"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.0.3.tgz#8accad7eabdab4cca3e1a56f5ccb57de2da0ff64"
+  dependencies:
+    "@types/node" "*"
+    "@types/react" "*"
+
+"@types/react@*", "@types/react@^16.0.35":
+  version "16.0.35"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.35.tgz#7ce8a83cad9690fd965551fc513217a74fc9e079"
 
 abab@^1.0.3, abab@^1.0.4:
   version "1.0.4"

@@ -29,6 +29,30 @@ module.exports = function override(config, env) {
 
 You can view an example project **[here](/example).**
 
+## Usage
+
+### SVG
+
+Two types of imports are supported for SVG.
+
+`import logoUrl from "./logo.svg";` gives you the URL.
+
+`import { ReactComponent as Logo } from "./logo.svg";` gives you a component.
+
+The following type definition can be used to support this.
+
+```typescript
+declare module "*.svg" {
+  import * as React from "react";
+
+  const value: string;
+  const ReactComponent: React.ComponentClass;
+
+  export default value;
+  export { ReactComponent };
+}
+```
+
 ## Developing
 
 ### Built With

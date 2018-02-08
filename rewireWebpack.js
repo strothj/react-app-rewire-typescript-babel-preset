@@ -67,8 +67,11 @@ const rewireTypescript = config => {
 
   // Replace the preset in the SVG loader for the same reason as above.
   const svgLoader = getLoader(config.module.rules, svgLoaderMatcher);
-  const svgBabelLoader = svgLoader.use.find(l => /babel-loader/.test(l.loader));
-  svgBabelLoader.options.presets = babelLoader.options.presets;
+  
+  if (svgLoader) {
+    const svgBabelLoader = svgLoader.use.find(l => /babel-loader/.test(l.loader));
+    svgBabelLoader.options.presets = babelLoader.options.presets;
+  }
 
   return config;
 };

@@ -15,9 +15,9 @@ const projectDirectory = resolveProjectDirectory();
 // Switch out the entry point index.js for index.tsx.
 // We need to perform the monkey patching on the react-scripts path module
 // on import to intercept the preflight checking.
-reactScriptsPathsModule.appIndexJs = path.resolve(
-  projectDirectory,
-  "src/index.tsx"
+reactScriptsPathsModule.appIndexJs = require.resolve(
+  "src/index.tsx",
+  { paths: [projectDirectory, process.cwd()] }
 );
 
 // Matcher to find JavaScript/JSX loader using getLoader util from

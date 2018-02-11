@@ -15,10 +15,9 @@ const projectDirectory = resolveProjectDirectory();
 // Switch out the entry point index.js for index.tsx.
 // We need to perform the monkey patching on the react-scripts path module
 // on import to intercept the preflight checking.
-reactScriptsPathsModule.appIndexJs = require.resolve(
-  "src/index.tsx",
-  { paths: [projectDirectory, process.cwd()] }
-);
+reactScriptsPathsModule.appIndexJs = require.resolve("src/index.tsx", {
+  paths: [projectDirectory, process.cwd()]
+});
 
 // Matcher to find JavaScript/JSX loader using getLoader util from
 // react-app-rewired. We need to able to locate the script loader to change the
@@ -67,9 +66,11 @@ const rewireTypescript = config => {
 
   // Replace the preset in the SVG loader for the same reason as above.
   const svgLoader = getLoader(config.module.rules, svgLoaderMatcher);
-  
+
   if (svgLoader) {
-    const svgBabelLoader = svgLoader.use.find(l => /babel-loader/.test(l.loader));
+    const svgBabelLoader = svgLoader.use.find(l =>
+      /babel-loader/.test(l.loader)
+    );
     svgBabelLoader.options.presets = babelLoader.options.presets;
   }
 

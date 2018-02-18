@@ -5,7 +5,7 @@
 const {
   rewireWebpack: rewireTypescript,
   rewireJest: rewireTypescriptJest
-} = require("../");
+} = require("../dist");
 
 module.exports = {
   webpack: function(config, env) {

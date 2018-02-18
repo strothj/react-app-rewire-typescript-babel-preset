@@ -1,7 +1,5 @@
-/* eslint-disable import/no-dynamic-require */
-
-const path = require("path");
-const resolveProjectDirectory = require("./resolveProjectDirectory");
+import path from "path";
+import resolveProjectDirectory from "./resolveProjectDirectory";
 
 const projectDirectory = resolveProjectDirectory();
 
@@ -26,17 +24,16 @@ const presetReactAppPath = path.resolve(
 
 const babelJestPath = path.resolve(projectDirectory, "node_modules/babel-jest");
 
+/* tslint:disable-next-line */
 const reactScriptsPathsModule = require(reactScriptsPathsModulePath);
 
+/* tslint:disable-next-line */
 const reactAppRequired = require(reactAppRewiredModulePath);
 
+/* tslint:disable-next-line */
 const presetReactApp = require(presetReactAppPath);
 
+/* tslint:disable-next-line */
 const babelJest = require(babelJestPath);
 
-module.exports = {
-  reactScriptsPathsModule,
-  reactAppRequired,
-  presetReactApp,
-  babelJest
-};
+export { reactScriptsPathsModule, reactAppRequired, presetReactApp, babelJest };

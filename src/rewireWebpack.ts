@@ -1,10 +1,7 @@
-const path = require("path");
-const wrapError = require("./wrapError");
-const resolveProjectDirectory = require("./resolveProjectDirectory");
-const {
-  reactScriptsPathsModule,
-  reactAppRequired
-} = require("./resolvedImports");
+import path from "path";
+import wrapError from "./wrapError";
+import resolveProjectDirectory from "./resolveProjectDirectory";
+import { reactScriptsPathsModule, reactAppRequired } from "./resolvedImports";
 
 const { getBabelLoader, getLoader } = reactAppRequired;
 
@@ -22,21 +19,21 @@ reactScriptsPathsModule.appIndexJs = require.resolve("src/index.tsx", {
 // Matcher to find JavaScript/JSX loader using getLoader util from
 // react-app-rewired. We need to able to locate the script loader to change the
 // regular expression for its file name matching.
-const scriptsLoaderMatcher = rule =>
+const scriptsLoaderMatcher = (rule: any) =>
   rule.test &&
   rule.test.toString() === /\.(js|jsx|mjs)$/.toString() &&
   rule.use &&
-  rule.use.find(r => r.loader && /babel-loader/.test(r.loader));
+  rule.use.find((r: any) => r.loader && /babel-loader/.test(r.loader));
 
 // The SVG loader will also need adjusting due to its use of the same preset as
 // mentioned above.
-const svgLoaderMatcher = rule =>
+const svgLoaderMatcher = (rule: any) =>
   rule.test &&
   rule.test.toString() === /\.svg$/.toString() &&
   rule.use &&
-  rule.use.find(r => r.loader && /babel-loader/.test(r.loader));
+  rule.use.find((r: any) => r.loader && /babel-loader/.test(r.loader));
 
-const rewireTypescript = config => {
+const rewireTypescript = (config: any) => {
   // eslint-disable-next-line no-param-reassign
   config.resolve.extensions = (config.resolve.extensions || []).concat(
     ".web.ts",
@@ -68,7 +65,7 @@ const rewireTypescript = config => {
   const svgLoader = getLoader(config.module.rules, svgLoaderMatcher);
 
   if (svgLoader) {
-    const svgBabelLoader = svgLoader.use.find(l =>
+    const svgBabelLoader = svgLoader.use.find((l: any) =>
       /babel-loader/.test(l.loader)
     );
     svgBabelLoader.options.presets = babelLoader.options.presets;
@@ -77,4 +74,4 @@ const rewireTypescript = config => {
   return config;
 };
 
-module.exports = rewireTypescript;
+export default rewireTypescript;

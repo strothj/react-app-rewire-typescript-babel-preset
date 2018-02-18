@@ -1,17 +1,16 @@
-/* eslint-disable no-restricted-syntax, no-param-reassign */
-
-const path = require("path");
+import path from "path";
 
 // Replace the custom Babel transform in react-scripts with the one from this
 // package. We do this to force the use of a preset with TypeScript support.
-const replaceBabelTransform = settingValue =>
+const replaceBabelTransform = (settingValue: string) =>
   /babelTransform\.js/.test(settingValue)
     ? path.resolve(__dirname, "rewireBabelTransform.js")
     : settingValue;
 
-const rewireJest = config => {
+const rewireJest = (config: any) => {
   const settingKeys = Object.keys(config);
 
+  /* tslint:disable-next-line */
   for (let i = 0; i < settingKeys.length; i += 1) {
     const setting = config[settingKeys[i]];
 
@@ -31,6 +30,7 @@ const rewireJest = config => {
           "ts|tsx|js|jsx|mjs"
         );
         const newSettingValue = replaceBabelTransform(setting[settingObjKey]);
+        // @ts-ignore
         settingObj[newSettingsObjKey] = newSettingValue;
       });
 
@@ -43,4 +43,4 @@ const rewireJest = config => {
   return config;
 };
 
-module.exports = rewireJest;
+export default rewireJest;

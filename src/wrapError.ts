@@ -4,5 +4,5 @@
  *
  * @param {string} message Error message text
  */
-module.exports = message =>
+export default (message: string) =>
   `react-app-rewire-typescript-babel-preset: ${message}`;

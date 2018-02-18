@@ -1,4 +1,4 @@
-const wrapError = require("./wrapError");
+import wrapError from "./wrapError";
 
 /**
  * Resolve the project directory using hints from the module cache.
@@ -24,9 +24,9 @@ const resolveProjectDirectory = () => {
 
   // Grab everything before node_modules and the trailing path separator.
   const match = moduleCacheKeyTargetRegex.exec(matchedModuleKey);
-  const projectDirectory = matchedModuleKey.substring(0, match.index);
+  const projectDirectory = matchedModuleKey.substring(0, match!.index);
 
   return projectDirectory;
 };
 
-module.exports = resolveProjectDirectory;
+export default resolveProjectDirectory;

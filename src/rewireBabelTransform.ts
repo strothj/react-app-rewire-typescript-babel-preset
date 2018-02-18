@@ -4,10 +4,12 @@
  * package to add support for TypeScript.
  */
 
-const path = require("path");
-const { babelJest } = require("./resolvedImports");
+import path from "path";
+import { babelJest } from "./resolvedImports";
 
-module.exports = babelJest.createTransformer({
+const process = babelJest.createTransformer({
   presets: [path.resolve(__dirname, "rewirePreset")],
   babelrc: false
-});
+}).process;
+
+export { process };

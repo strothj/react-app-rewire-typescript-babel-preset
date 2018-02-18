@@ -10,6 +10,9 @@
     "curly": false,
     "object-literal-sort-keys": false,
     "ordered-imports": false,
+    "import-name": false,
+    "no-submodule-imports": false,
+    "no-implicit-dependencies": false,
     "strict-boolean-expressions": false,
     "prettier": true
   }

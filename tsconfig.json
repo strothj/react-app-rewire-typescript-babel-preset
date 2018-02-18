@@ -4,8 +4,8 @@
     "module": "commonjs",
     "lib": ["esnext"],
     "declaration": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
+    "outDir": "./packages/rewire/dist",
+    "rootDir": "./packages/rewire",
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -19,5 +19,5 @@
       }
     ]
   },
-  "exclude": ["dist", "example"]
+  "exclude": ["dist", "packages/example"]
 }

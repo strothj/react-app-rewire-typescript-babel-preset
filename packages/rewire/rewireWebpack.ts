@@ -1,20 +1,23 @@
 import path from "path";
+import reactScriptsPaths from "react-scripts/config/paths";
 import wrapError from "./wrapError";
-import resolveProjectDirectory from "./resolveProjectDirectory";
-import { reactScriptsPathsModule, reactAppRequired } from "./resolvedImports";
+// import resolveProjectDirectory from "./resolveProjectDirectory";
+import { reactAppRequired } from "./resolvedImports";
+// import { reactScriptsPathsModule, reactAppRequired } from "./resolvedImports";
 
 const { getBabelLoader, getLoader } = reactAppRequired;
 
 // Search the module cache for the react-scripts package and resolve the project
 // base directory based on its location.
-const projectDirectory = resolveProjectDirectory();
+// const projectDirectory = resolveProjectDirectory();
 
 // Switch out the entry point index.js for index.tsx.
 // We need to perform the monkey patching on the react-scripts path module
 // on import to intercept the preflight checking.
-reactScriptsPathsModule.appIndexJs = require.resolve("src/index.tsx", {
-  paths: [projectDirectory, process.cwd()]
-});
+// reactScriptsPathsModule.appIndexJs = require.resolve("src/index.tsx", {
+//   paths: [projectDirectory, process.cwd()]
+// });
+replaceEntryFileExtension();
 
 // Matcher to find JavaScript/JSX loader using getLoader util from
 // react-app-rewired. We need to able to locate the script loader to change the
@@ -75,3 +78,12 @@ const rewireTypescript = (config: any) => {
 };
 
 export default rewireTypescript;
+
+function replaceEntryFileExtension() {
+  console.log(reactScriptsPaths.appIndexJs);
+  reactScriptsPaths.appIndexJs = reactScriptsPaths.appIndexJs.replace(
+    /src[\\\/]index.js$/,
+    `src${path.sep}index.tsx`
+  );
+  console.log(reactScriptsPaths.appIndexJs);
+}

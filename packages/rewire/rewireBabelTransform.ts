@@ -5,11 +5,13 @@
  */
 
 import path from "path";
-import { babelJest } from "./resolvedImports";
+import babelJest from "babel-jest";
 
-const process = babelJest.createTransformer({
+const transformer = babelJest.createTransformer({
   presets: [path.resolve(__dirname, "rewirePreset")],
   babelrc: false
-}).process;
+});
 
-export { process };
+// Not using a default export here on purpose to match the export structure
+// of react-script's babelTransform.js.
+module.exports = transformer;

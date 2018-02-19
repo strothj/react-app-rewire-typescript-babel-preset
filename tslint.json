@@ -18,6 +18,7 @@
     "strict-boolean-expressions": false,
     "member-access": false,
     "max-classes-per-file": false,
+    "array-type": false,
     "prettier": true
   }
 }

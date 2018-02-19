@@ -1,4 +1,4 @@
-import { presetReactApp } from "./resolvedImports";
+import presetReactApp from "babel-preset-react-app";
 
 const removeFlowPreset = (...args: any[]) => {
   // Pass along arguments to babel-preset-react-app and generate its preset.
@@ -6,7 +6,7 @@ const removeFlowPreset = (...args: any[]) => {
 
   // Replace the Flow preset with TypeScript.
   preset.presets = preset.presets.filter(
-    (p: any) => !/FlowStripTypes/.test(p.toString())
+    p => !/FlowStripTypes/.test(p.toString())
   );
   preset.presets.push("@babel/preset-typescript");
 

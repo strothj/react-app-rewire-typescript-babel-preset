@@ -19,5 +19,5 @@
       }
     ]
   },
-  "exclude": ["dist", "packages/example"]
+  "exclude": ["packages/example", "packages/rewire/dist"]
 }

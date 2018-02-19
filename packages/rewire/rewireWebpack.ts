@@ -1,89 +1,102 @@
 import path from "path";
+import * as webpack from "webpack";
 import reactScriptsPaths from "react-scripts/config/paths";
-import wrapError from "./wrapError";
-// import resolveProjectDirectory from "./resolveProjectDirectory";
-import { reactAppRequired } from "./resolvedImports";
-// import { reactScriptsPathsModule, reactAppRequired } from "./resolvedImports";
-
-const { getBabelLoader, getLoader } = reactAppRequired;
-
-// Search the module cache for the react-scripts package and resolve the project
-// base directory based on its location.
-// const projectDirectory = resolveProjectDirectory();
+import { getBabelLoader, getLoader, Matcher } from "react-app-rewired";
 
 // Switch out the entry point index.js for index.tsx.
-// We need to perform the monkey patching on the react-scripts path module
-// on import to intercept the preflight checking.
-// reactScriptsPathsModule.appIndexJs = require.resolve("src/index.tsx", {
-//   paths: [projectDirectory, process.cwd()]
-// });
-replaceEntryFileExtension();
+// We need to do this on module import to intercept react-script's preflight
+// module check.
+reactScriptsPaths.appIndexJs = reactScriptsPaths.appIndexJs.replace(
+  /src[\\\/]index.js$/,
+  `src${path.sep}index.tsx`
+);
 
-// Matcher to find JavaScript/JSX loader using getLoader util from
-// react-app-rewired. We need to able to locate the script loader to change the
-// regular expression for its file name matching.
-const scriptsLoaderMatcher = (rule: any) =>
-  rule.test &&
-  rule.test.toString() === /\.(js|jsx|mjs)$/.toString() &&
-  rule.use &&
-  rule.use.find((r: any) => r.loader && /babel-loader/.test(r.loader));
+export default function(c: webpack.Configuration): webpack.Configuration {
+  // Validate and narrow type
+  const config = getValidatedConfig(c);
 
-// The SVG loader will also need adjusting due to its use of the same preset as
-// mentioned above.
-const svgLoaderMatcher = (rule: any) =>
-  rule.test &&
-  rule.test.toString() === /\.svg$/.toString() &&
-  rule.use &&
-  rule.use.find((r: any) => r.loader && /babel-loader/.test(r.loader));
+  config.resolve.extensions.push(".web.ts", ".web.tsx", ".ts", ".tsx");
 
-const rewireTypescript = (config: any) => {
-  // eslint-disable-next-line no-param-reassign
-  config.resolve.extensions = (config.resolve.extensions || []).concat(
-    ".web.ts",
-    ".ts",
-    ".tsx"
-  );
-
-  // Locate the Webpack loader responsible for handling Javascript assets.
+  // Locate the Webpack loader responsible for handling Javascript assets and
+  // add TypeScript file extensions.
   const scriptLoader = getLoader(config.module.rules, scriptsLoaderMatcher);
-
-  if (!scriptLoader) {
-    throw new Error(wrapError("Unable to locate scripts loader."));
-  }
-
-  // Add TypeScript file extensions to the loader matching.
+  if (!scriptLoader) throw new Error("Unable to locate scripts loader.");
   scriptLoader.test = /\.(ts|tsx|js|jsx|mjs)$/;
-
-  const babelLoader = getBabelLoader(config.module.rules);
-
-  if (!babelLoader) {
-    throw new Error(wrapError("Unable to locate Babel loader."));
-  }
 
   // Replace the babel-preset-react-app preset with the preset rewire from this
   // package. This is done so @babel/preset-flow can be removed.
+  const babelLoader = getBabelLoader(config.module.rules) as webpack.NewLoader;
+  if (!babelLoader || !babelLoader.options)
+    throw new Error("Unable to locate Babel loader.");
   babelLoader.options.presets = [path.resolve(__dirname, "rewirePreset")];
 
-  // Replace the preset in the SVG loader for the same reason as above.
+  // Older versions of react-scripts v2 use a Webpack loader to add support for
+  // SVGs as React components. Later versions do this using a Babel plugin.
+  // Check if it is present. If it is, replace the preset in the SVG loader's
+  // sibling Babel loader.
   const svgLoader = getLoader(config.module.rules, svgLoaderMatcher);
-
   if (svgLoader) {
+    if (!("use" in svgLoader) || !Array.isArray(svgLoader.use))
+      throw new Error("Unexpected layout for SVG loader.");
     const svgBabelLoader = svgLoader.use.find((l: any) =>
       /babel-loader/.test(l.loader)
     );
+    if (
+      !svgBabelLoader ||
+      typeof svgBabelLoader !== "object" ||
+      !("options" in svgBabelLoader) ||
+      svgBabelLoader.options == null
+    )
+      throw new Error("Unable to locate sibling Babel loader in SVG loader.");
     svgBabelLoader.options.presets = babelLoader.options.presets;
   }
 
   return config;
-};
+}
 
-export default rewireTypescript;
+// Matcher to find JavaScript/JSX loader using getLoader util from
+// react-app-rewired. We need to able to locate the script loader to change the
+// regular expression for its file name matching.
+const scriptsLoaderMatcher: Matcher = rule =>
+  rule.test &&
+  rule.test.toString() === /\.(js|jsx|mjs)$/.toString() &&
+  "use" in rule &&
+  Array.isArray(rule.use) &&
+  rule.use.find((r: any) => r.loader && /babel-loader/.test(r.loader));
 
-function replaceEntryFileExtension() {
-  console.log(reactScriptsPaths.appIndexJs);
-  reactScriptsPaths.appIndexJs = reactScriptsPaths.appIndexJs.replace(
-    /src[\\\/]index.js$/,
-    `src${path.sep}index.tsx`
-  );
-  console.log(reactScriptsPaths.appIndexJs);
+// The SVG loader will also need adjusting due to its use of the same preset as
+// mentioned above.
+const svgLoaderMatcher: Matcher = rule =>
+  rule.test &&
+  rule.test.toString() === /\.svg$/.toString() &&
+  "use" in rule &&
+  Array.isArray(rule.use) &&
+  rule.use &&
+  rule.use.find((r: any) => r.loader && /babel-loader/.test(r.loader));
+
+interface ReactScriptsConfig extends webpack.Configuration {
+  resolve: {
+    extensions: string[];
+  };
+  module: {
+    rules: webpack.Rule[];
+  };
+}
+
+function getValidatedConfig(config: webpack.Configuration): ReactScriptsConfig {
+  let error: string | undefined;
+
+  const matchesShape = (c: webpack.Configuration): c is ReactScriptsConfig => {
+    error = (() => {
+      if (!c.resolve) return "resolve is undefined";
+      if (!c.resolve.extensions) return "resolve.extensions is undefined";
+      if (!c.module) return "module is undefined";
+      return undefined;
+    })();
+
+    return error === undefined;
+  };
+
+  if (matchesShape(config)) return config;
+  throw new Error(`Unexpected Webpack config shape: ${error}.`);
 }

@@ -11,8 +11,10 @@
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "import-name": false,
+    "interface-name": false,
     "no-submodule-imports": false,
     "no-implicit-dependencies": false,
+    "no-object-literal-type-assertion": false,
     "strict-boolean-expressions": false,
     "prettier": true
   }

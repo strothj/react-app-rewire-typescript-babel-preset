@@ -26,6 +26,7 @@
   "precommit": "prepublishOnly",
   "devDependencies": {
     "@types/node": "^9.4.6",
+    "@types/webpack": "^3.8.8",
     "npm-run-all": "^4.1.2",
     "pre-commit": "^1.2.2",
     "prettier": "^1.10.2",

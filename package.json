@@ -1,14 +1,8 @@
 {
   "private": true,
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ],
-    "nohoist": [
-      "**/@types/react",
-      "**/@types/react-dom"
-    ]
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "tsc -p ./tsconfig.build.json",
     "clean": "rimraf packages/rewire/dist",

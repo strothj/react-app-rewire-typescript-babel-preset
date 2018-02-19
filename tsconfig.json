@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "lib": ["esnext"],
+    "lib": ["esnext", "dom"],
     "declaration": true,
     "outDir": "./packages/rewire/dist",
     "rootDir": "./packages/rewire",

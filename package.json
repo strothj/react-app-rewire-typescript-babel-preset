@@ -20,6 +20,9 @@
     "clean",
     "build"
   ],
+  "engines": {
+    "node": ">= 8.9"
+  },
   "devDependencies": {
     "pre-commit": "^1.2.2",
     "prettier": "^1.10.2",

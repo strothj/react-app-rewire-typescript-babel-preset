@@ -5,7 +5,9 @@
  */
 
 import path from "path";
-import babelJest from "babel-jest";
+
+// @ts-ignore
+import babelJest from "./rewireBabelJest";
 
 const transformer = babelJest.createTransformer({
   presets: [path.resolve(__dirname, "rewirePreset")],

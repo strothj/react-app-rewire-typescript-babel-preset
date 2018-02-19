@@ -18,6 +18,5 @@
         "name": "tslint-language-service"
       }
     ]
-  },
-  "exclude": ["packages/example", "packages/rewire/dist"]
+  }
 }

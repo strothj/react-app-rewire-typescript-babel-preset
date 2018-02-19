@@ -1,7 +1,35 @@
 {
   "private": true,
   "workspaces": {
-    "packages": ["packages/*"],
-    "nohoist": ["**/@types/react", "**/@types/react-dom"]
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/@types/react",
+      "**/@types/react-dom"
+    ]
+  },
+  "scripts": {
+    "build": "tsc -p ./tsconfig.build.json",
+    "clean": "rimraf packages/rewire/dist",
+    "lint": "tslint -p ./",
+    "start": "tsc -p ./tsconfig.build.json --watch"
+  },
+  "precommit": [
+    "lint",
+    "clean",
+    "build"
+  ],
+  "devDependencies": {
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.10.2",
+    "rimraf": "^2.6.2",
+    "tslint": "^5.9.1",
+    "tslint-config-airbnb": "^5.6.0",
+    "tslint-config-prettier": "^1.8.0",
+    "tslint-eslint-rules": "^5.0.0",
+    "tslint-language-service": "^0.9.8",
+    "tslint-plugin-prettier": "^1.3.0",
+    "typescript": "^2.7.2"
   }
 }

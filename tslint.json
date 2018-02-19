@@ -16,6 +16,8 @@
     "no-implicit-dependencies": false,
     "no-object-literal-type-assertion": false,
     "strict-boolean-expressions": false,
+    "member-access": false,
+    "max-classes-per-file": false,
     "prettier": true
   }
 }

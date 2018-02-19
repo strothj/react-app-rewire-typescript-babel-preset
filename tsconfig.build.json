@@ -1,0 +1,4 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": ["packages/example", "packages/rewire/dist"]
+}

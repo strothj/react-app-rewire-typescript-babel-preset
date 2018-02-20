@@ -1,8 +1,12 @@
-# react-app-rewire-typescript-babel-preset
+# react-app-rewire-typescript-babel-preset ![Circle CI](https://circleci.com/gh/strothj/react-app-rewire-typescript-babel-preset.svg?style=shield&circle-token=3c1db615e8de775cca8548d5634019e56b8a1d6d)
 
 > Add TypeScript support to Create React App using @babel/preset-typescript
 
 This is a plugin for [react-app-rewired](https://github.com/timarney/react-app-rewired) that adds support for TypeScript using the Babel preset [@babel/preset-typescript](https://github.com/babel/babel/tree/master/packages/babel-preset-typescript).
+
+## Upgrading from v1
+
+Update to the latest version of `react-scripts@next` and replace `react-app-rewired v1` with `react-app-rewired@next`.
 
 ## Issues and Limitations
 
@@ -26,6 +30,8 @@ $ create-react-app --scripts-version=react-scripts@next my-project
 This will tell the `create-react-app` tool to use the beta version of `react-scripts`. When version 2 is officially released, the command will need to be run without `--scripts-version=react-scripts@next`.
 
 Follow the installation directions for **[react-app-rewired](https://github.com/timarney/react-app-rewired)**.
+
+**Important** You will need to install v2 of `react-app-rewired`, which at the time of writing can be installed using the command `npm install --save-dev react-app-rewired@next`.
 
 Create a `config-overrides.js` in your project root with the following contents:
 
@@ -57,7 +63,7 @@ Install react-app-rewire-typescript-babel-preset and [@babel/preset-typescript](
 $ npm install --save-dev react-app-rewire-typescript-babel-preset @babel/preset-typescript
 ```
 
-You can view an example project **[here](/example).**
+You can view an example project **[here](/packages/example).**
 
 ## Usage
 
@@ -154,7 +160,9 @@ This project uses [Yarn](https://yarnpkg.com/en/) for dependency management inst
 
 ### Setting up Dev
 
-Here's a brief intro about what a developer must do in order to start developing the project further:
+The project is structured as a monorepo to ensure that packages resolve correctly when used in a monorepo environment.
+
+Clone the project and install the dependencies using Yarn.
 
 ```shell
 git clone https://github.com/strothj/react-app-rewire-typescript-babel-preset.git
@@ -165,7 +173,7 @@ yarn
 The project in the example directory can be used for testing.
 
 ```shell
-cd example
+cd packages/example
 yarn
 yarn start
 ```
@@ -174,7 +182,7 @@ That will install the dependencies for the example project and start Create Reac
 
 ## Style guide
 
-This project uses a combination of ESLint (Airbnb config) and Prettier.
+This project uses a combination of TSLint (Airbnb config) and Prettier.
 
 ## License
 

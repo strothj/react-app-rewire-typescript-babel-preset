@@ -4,6 +4,12 @@
 
 This is a plugin for [react-app-rewired](https://github.com/timarney/react-app-rewired) that adds support for TypeScript using the Babel preset [@babel/preset-typescript](https://github.com/babel/babel/tree/master/packages/babel-preset-typescript).
 
+## Changelog
+
+### [2.1.0] - 2018-03-22
+
+* Add support for `react-scripts@2.0.0-next.b2fd8db8` (thanks [@detrohutt](https://github.com/strothj/react-app-rewire-typescript-babel-preset/pull/4))
+
 ## Upgrading from v1
 
 Update to the latest version of `react-scripts@next` and replace `react-app-rewired v1` with `react-app-rewired@next`.

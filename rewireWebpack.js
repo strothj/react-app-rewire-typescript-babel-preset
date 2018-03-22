@@ -63,7 +63,9 @@ const rewireTypescript = config => {
 
   // Replace the babel-preset-react-app preset with the preset rewire from this
   // package. This is done so @babel/preset-flow can be removed.
-  babelLoader.options.presets = [path.resolve(__dirname, "rewirePreset")];
+  babelLoader.options.presets = [
+    [path.resolve(__dirname, "rewirePreset"), { flow: false }]
+  ];
 
   // Replace the preset in the SVG loader for the same reason as above.
   const svgLoader = getLoader(config.module.rules, svgLoaderMatcher);

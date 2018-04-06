@@ -15,7 +15,7 @@ export default function(c: webpack.Configuration): webpack.Configuration {
   // Validate and narrow type
   const config = getValidatedConfig(c);
 
-  config.resolve.extensions.push(".web.ts", ".web.tsx", ".ts", ".tsx");
+  config.resolve.extensions.unshift(".web.ts", ".web.tsx", ".ts", ".tsx");
 
   // Locate the Webpack loader responsible for handling Javascript assets and
   // add TypeScript file extensions.

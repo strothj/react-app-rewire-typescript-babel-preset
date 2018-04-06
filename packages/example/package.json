@@ -33,7 +33,7 @@
     "@types/lscache": "^1.0.29",
     "@types/react": "^16.0.35",
     "@types/react-dom": "^16.0.3",
-    "react-app-rewire-typescript-babel-preset": "2.1.0",
+    "react-app-rewire-typescript-babel-preset": "^2.0.0",
     "react-app-rewired": "^2.0.0"
   }
 }

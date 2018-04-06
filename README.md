@@ -6,9 +6,17 @@ This is a plugin for [react-app-rewired](https://github.com/timarney/react-app-r
 
 ## Changelog
 
+### [2.1.1] - 2018-04-05
+
+#### Fixed
+
+* Prefer files ending with TypeScript extensions over Javascript ([#5](https://github.com/strothj/react-app-rewire-typescript-babel-preset/pull/5)).
+
 ### [2.1.0] - 2018-03-22
 
-* Add support for `react-scripts@2.0.0-next.b2fd8db8` (thanks [@detrohutt](https://github.com/strothj/react-app-rewire-typescript-babel-preset/pull/4))
+#### Added
+
+* Support for `react-scripts@2.0.0-next.b2fd8db8` (thanks [@detrohutt](https://github.com/strothj/react-app-rewire-typescript-babel-preset/pull/4))
 
 ## Upgrading from v1
 

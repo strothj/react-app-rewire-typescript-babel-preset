@@ -1,8 +1,12 @@
 declare module "react-app-rewired" {
-  import { Rule, Loader } from "webpack";
+  import { RuleSetRule } from "webpack";
 
-  type Matcher = (rule: Rule) => Loader | boolean | undefined;
+  export type Matcher = (rule: RuleSetRule) => boolean;
 
-  export function getBabelLoader(rules: Rule[]): Rule;
-  export function getLoader(rules: Rule[], matcher: Matcher): Rule;
+  export function getBabelLoader(rules: RuleSetRule[]): RuleSetRule;
+
+  export function getLoader(
+    rules: RuleSetRule[],
+    matcher: Matcher
+  ): RuleSetRule;
 }

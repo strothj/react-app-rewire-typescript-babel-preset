@@ -48,6 +48,8 @@ export default function(c: webpack.Configuration): webpack.Configuration {
       svgBabelLoader.options == null
     )
       throw new Error("Unable to locate sibling Babel loader in SVG loader.");
+    if (typeof svgBabelLoader.options === "string")
+      throw new Error("Unexpected layout for SVG loader.");
     svgBabelLoader.options.presets = babelLoader.options.presets;
   }
 
@@ -58,21 +60,23 @@ export default function(c: webpack.Configuration): webpack.Configuration {
 // react-app-rewired. We need to able to locate the script loader to change the
 // regular expression for its file name matching.
 const scriptsLoaderMatcher: Matcher = rule =>
-  rule.test &&
-  rule.test.toString() === /\.(js|jsx|mjs)$/.toString() &&
-  "use" in rule &&
-  Array.isArray(rule.use) &&
-  rule.use.find((r: any) => r.loader && /babel-loader/.test(r.loader));
+  Boolean(
+    rule.test &&
+      rule.test.toString() === /\.(js|jsx|mjs)$/.toString() &&
+      Array.isArray(rule.use) &&
+      rule.use.find((r: any) => r.loader && /babel-loader/.test(r.loader))
+  );
 
 // The SVG loader will also need adjusting due to its use of the same preset as
 // mentioned above.
 const svgLoaderMatcher: Matcher = rule =>
-  rule.test &&
-  rule.test.toString() === /\.svg$/.toString() &&
-  "use" in rule &&
-  Array.isArray(rule.use) &&
-  rule.use &&
-  rule.use.find((r: any) => r.loader && /babel-loader/.test(r.loader));
+  Boolean(
+    rule.test &&
+      rule.test.toString() === /\.svg$/.toString() &&
+      Array.isArray(rule.use) &&
+      rule.use &&
+      rule.use.find((r: any) => r.loader && /babel-loader/.test(r.loader))
+  );
 
 interface ReactScriptsConfig extends webpack.Configuration {
   resolve: {

@@ -19,6 +19,7 @@
     "member-access": false,
     "max-classes-per-file": false,
     "array-type": false,
+    "variable-name": false,
     "prettier": true
   }
 }

@@ -1,11 +1,7 @@
 import * as React from "react";
 import logo from "./logo.svg";
+import { ReactComponent as TypeScriptLogo } from "./typescriptLogo.svg";
 import "./App.css";
-
-// Testing import from JavaScript module.
-import * as lscache from "lscache";
-
-lscache.setBucket("test");
 
 interface TypeScriptComponentProps {
   message: string;
@@ -23,6 +19,10 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          <TypeScriptLogo
+            className="App-typescript-logo"
+            alt="TypeScript Logo"
+          />
           <p>
             Edit <code>src/App.tsx</code> and save to reload.
           </p>

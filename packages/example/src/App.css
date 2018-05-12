@@ -22,6 +22,10 @@
   color: #61dafb;
 }
 
+.App-typescript-logo {
+  height: 10vmin;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

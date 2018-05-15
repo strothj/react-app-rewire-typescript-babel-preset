@@ -6,6 +6,12 @@ This is a plugin for [react-app-rewired](https://github.com/timarney/react-app-r
 
 ## Changelog
 
+### [2.1.2] - 2018-05-15
+
+#### Added
+
+* Added missing README to published package.
+
 ### [2.1.1] - 2018-04-05
 
 #### Fixed

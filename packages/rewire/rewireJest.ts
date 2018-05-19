@@ -48,8 +48,9 @@ const rewireJest = (config: any) => {
   return config;
 };
 
-// We reimplement the logic from "createJestConfig.js" to look for a TypeScript
-// version of the setupTests file instead of the original Javascript.
+// We reimplement the logic from "createJestConfig.js" so we can use
+// "/src/setupTests.ts" . If no TypeScript version is available, we look for
+// "/src/setupTests.js".
 //
 // ref: create-react-app/packages/react-scripts/scripts/utils/createJestConfig.js
 // ```
@@ -60,13 +61,20 @@ const rewireJest = (config: any) => {
 //   : undefined;
 // ```
 function rewireSetupTestFrameworkScriptFile(config: object): object {
-  const setupTestsFile = fs.existsSync(
-    // ref: create-react-app/packages/react-scripts/config/paths.js
-    // > testsSetup: resolveApp('src/setupTests.js'),
-    reactScriptsPaths.testsSetup.replace(/\.js$/, ".ts")
-  )
-    ? "<rootDir>/src/setupTests.ts"
-    : undefined;
+  // ref: create-react-app/packages/react-scripts/config/paths.js
+  // > testsSetup: resolveApp('src/setupTests.js'),
+  const setupTestsFile = [
+    // Check for TypeScript version of setupTests first.
+    [
+      reactScriptsPaths.testsSetup.replace(/\.js$/, ".ts"),
+      "<rootDir>/src/setupTests.ts"
+    ],
+    // Use Javascript version if TypeScript version is not present.
+    [reactScriptsPaths.testsSetup, "<rootDir>/src/setupTests.js"]
+  ].reduce<string | undefined>((acc, [filePath, settingsValue]) => {
+    if (acc) return acc;
+    return fs.existsSync(filePath) ? settingsValue : undefined;
+  }, undefined);
 
   return {
     ...config,

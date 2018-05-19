@@ -6,6 +6,12 @@ This is a plugin for [react-app-rewired](https://github.com/timarney/react-app-r
 
 ## Changelog
 
+### [2.2.0] - 2018-05-19
+
+#### Added
+
+* Support for loading `src/setupTests.ts` (TypeScript). The rewire will load an existing Javascript version if no TypeScript version is present. Fixes [#8](https://github.com/strothj/react-app-rewire-typescript-babel-preset/issues/8).
+
 ### [2.1.2] - 2018-05-15
 
 #### Added

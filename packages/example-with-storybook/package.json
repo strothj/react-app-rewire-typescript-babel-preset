@@ -1,5 +1,5 @@
 {
-  "name": "example",
+  "name": "example-with-storybook",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,7 +11,9 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -c .storybook -p 9001",
+    "storybook:build": "build-storybook -c .storybook -o storybook-static"
   },
   "browserslist": {
     "development": [
@@ -27,10 +29,14 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.47",
+    "@babel/preset-stage-0": "^7.0.0-beta.47",
     "@babel/preset-typescript": "^7.0.0-beta.47",
+    "@storybook/react": "^3.4.5",
     "@types/jest": "^22.2.3",
     "@types/react": "^16.3.14",
     "@types/react-dom": "^16.0.5",
+    "@types/storybook__react": "^3.0.7",
     "react-app-rewire-typescript-babel-preset": "^2.0.0",
     "react-app-rewired": "^2.0.0"
   }

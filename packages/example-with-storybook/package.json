@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
     "react-scripts": "2.0.0-next.66cc7a90"
   },
   "scripts": {
@@ -29,13 +29,13 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.47",
-    "@babel/preset-stage-0": "^7.0.0-beta.47",
+    "@babel/core": "^7.0.0-beta.49",
+    "@babel/preset-stage-0": "^7.0.0-beta.49",
     "@babel/preset-typescript": "^7.0.0-beta.47",
-    "@storybook/react": "^3.4.5",
-    "@types/jest": "^22.2.3",
-    "@types/react": "^16.3.14",
-    "@types/react-dom": "^16.0.5",
+    "@storybook/react": "^3.4.7",
+    "@types/jest": "^23.0.0",
+    "@types/react": "^16.3.17",
+    "@types/react-dom": "^16.0.6",
     "@types/storybook__react": "^3.0.7",
     "react-app-rewire-typescript-babel-preset": "^2.0.0",
     "react-app-rewired": "^2.0.0"

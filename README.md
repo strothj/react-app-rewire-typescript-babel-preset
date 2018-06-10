@@ -6,6 +6,12 @@ This is a plugin for [react-app-rewired](https://github.com/timarney/react-app-r
 
 ## Changelog
 
+### [2.2.1] - 2018-06-10
+
+#### Fixed
+
+* Resolve compatible issue between `@babel/core@7.0.0-beta.44` (used in `react-scripts@2.0.0-next.66cc7a90`) and `@babel/preset-typescript@^7.0.0-beta.48`. Fixes [#12](https://github.com/strothj/react-app-rewire-typescript-babel-preset/issues/12).
+
 ### [2.2.0] - 2018-05-19
 
 #### Added

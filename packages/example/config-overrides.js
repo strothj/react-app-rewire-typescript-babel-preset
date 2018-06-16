@@ -1,6 +1,7 @@
 const {
   rewireWebpack: rewireTypescript,
-  rewireJest: rewireTypescriptJest
+  rewireJest: rewireTypescriptJest,
+  rewireTSLint
 } = require("react-app-rewire-typescript-babel-preset");
 // const {
 //   rewireWebpack: rewireTypescript,
@@ -9,7 +10,10 @@ const {
 
 module.exports = {
   webpack: function(config, env) {
-    return rewireTypescript(config);
+    config = rewireTypescript(config);
+    config = rewireTSLint(config);
+
+    return config;
   },
   jest: function(config) {
     return rewireTypescriptJest(config);

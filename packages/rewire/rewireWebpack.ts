@@ -2,6 +2,7 @@ import path from "path";
 import * as webpack from "webpack";
 import reactScriptsPaths from "react-scripts/config/paths";
 import { getBabelLoader, getLoader, Matcher } from "react-app-rewired";
+import { getValidatedConfig } from "./webpackUtils";
 
 // Switch out the entry point index.js for index.tsx.
 // We need to do this on module import to intercept react-script's preflight
@@ -77,30 +78,3 @@ const svgLoaderMatcher: Matcher = rule =>
       rule.use &&
       rule.use.find((r: any) => r.loader && /babel-loader/.test(r.loader))
   );
-
-interface ReactScriptsConfig extends webpack.Configuration {
-  resolve: {
-    extensions: string[];
-  };
-  module: {
-    rules: webpack.Rule[];
-  };
-}
-
-function getValidatedConfig(config: webpack.Configuration): ReactScriptsConfig {
-  let error: string | undefined;
-
-  const matchesShape = (c: webpack.Configuration): c is ReactScriptsConfig => {
-    error = (() => {
-      if (!c.resolve) return "resolve is undefined";
-      if (!c.resolve.extensions) return "resolve.extensions is undefined";
-      if (!c.module) return "module is undefined";
-      return undefined;
-    })();
-
-    return error === undefined;
-  };
-
-  if (matchesShape(config)) return config;
-  throw new Error(`Unexpected Webpack config shape: ${error}.`);
-}

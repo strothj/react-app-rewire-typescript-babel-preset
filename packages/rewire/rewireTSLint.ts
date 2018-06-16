@@ -11,7 +11,7 @@ export default function(c: webpack.Configuration): webpack.Configuration {
 
   // Create a new rule
   const tsLintLoader: webpack.RuleSetRule = {
-    test: /\.(web\.ts|web\.tsx|ts|tsx)$/,
+    test: /\.(ts|tsx)$/,
     enforce: "pre",
     use: [
       {

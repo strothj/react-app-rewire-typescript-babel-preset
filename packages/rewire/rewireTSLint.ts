@@ -2,7 +2,10 @@ import * as webpack from "webpack";
 import { getLoader, Matcher } from "react-app-rewired";
 import { getValidatedConfig } from "./webpackUtils";
 
-export default function(c: webpack.Configuration): webpack.Configuration {
+export default function(
+  c: webpack.Configuration,
+  options?: object
+): webpack.Configuration {
   // Validate and narrow type
   const config = getValidatedConfig(c);
 
@@ -15,8 +18,7 @@ export default function(c: webpack.Configuration): webpack.Configuration {
     enforce: "pre",
     use: [
       {
-        // Don't need to provide the options here as the defaults
-        // are sufficient.
+        options,
         loader: require.resolve("tslint-loader")
       }
     ],

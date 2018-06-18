@@ -22,5 +22,8 @@
   },
   "peerDependencies": {
     "react-app-rewired": "^2.0.0"
+  },
+  "dependencies": {
+    "tslint-loader": "^3.6.0"
   }
 }

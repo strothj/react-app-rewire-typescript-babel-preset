@@ -1,17 +1,9 @@
 import * as React from "react";
 import logo from "./logo.svg";
 import { ReactComponent as TypeScriptLogo } from "./typescriptLogo.svg";
+import AnotherComponent from "./AnotherComponent";
+
 import "./App.css";
-
-interface TypeScriptComponentProps {
-  message: string;
-}
-
-class TypeScriptComponent extends React.Component<TypeScriptComponentProps> {
-  render() {
-    return <p>{this.props.message}</p>;
-  }
-}
 
 class App extends React.Component {
   render() {
@@ -26,7 +18,7 @@ class App extends React.Component {
           <p>
             Edit <code>src/App.tsx</code> and save to reload.
           </p>
-          <TypeScriptComponent message="Hello from TypeScript component." />
+          <AnotherComponent message="Hello from another TypeScript component." />
           <a
             className="App-link"
             href="https://reactjs.org"

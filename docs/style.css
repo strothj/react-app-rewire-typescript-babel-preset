@@ -1,0 +1,10 @@
+/* Make the name smaller in the side bar by reducing the font size. */
+.app-name-link {
+  font-size: 16px;
+}
+
+/* Move the hamburger bottom to the top. */
+.sidebar-toggle {
+  bottom: initial;
+  padding: 16px !important;
+}

@@ -11,7 +11,7 @@ import babelJest from "./rewireBabelJest";
 
 const transformer = babelJest.createTransformer({
   presets: [path.resolve(__dirname, "rewirePreset")],
-  babelrc: false
+  babelrc: true
 });
 
 // Not using a default export here on purpose to match the export structure

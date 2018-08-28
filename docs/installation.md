@@ -162,3 +162,25 @@ $ npm install --save-dev typescript
 ```
 
 ?> You'll also need to add the `noEmit` option to your `tsconfig.json` to prevent your source files from being compiled. See the above sample.
+
+## Jest
+
+#### Babel
+
+When using Jest, your code is not compiled via Webpack. Any changes made in `config-overrides.js` to Webpack's Babel config will **not** be applied when running tests in Jest.
+
+If you need to load Babel plugins/presets during testing, set up an external Babel config (see: https://babeljs.io/docs/en/next/configuration.html).
+
+You can ensure this config only targets the "test" environment:
+
+```json
+{
+  "env": {
+    "test": {
+      "plugins": [
+        "emotion"
+      ]
+    }
+  }
+}
+```

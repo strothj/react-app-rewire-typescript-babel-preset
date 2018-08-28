@@ -1,10 +1,16 @@
 # Changelog
 
-## [2.3] - 2018-06-18
+## [2.4.0] - 2018-08-27
 
 ### Added
 
-- Add support TSLint. See [PR #14](https://github.com/strothj/react-app-rewire-typescript-babel-preset/pull/14) / [Integrate TSLint](#integrate-tslint) (thanks @ianschmitz).
+- Allow babelrc in `babel-jest` transformer. See [PR #19](https://github.com/strothj/react-app-rewire-typescript-babel-preset/pull/19) (thanks @lee-reinhardt).
+
+## [2.3.0] - 2018-06-18
+
+### Added
+
+- Add support for TSLint. See [PR #14](https://github.com/strothj/react-app-rewire-typescript-babel-preset/pull/14) / [Integrate TSLint](#integrate-tslint) (thanks @ianschmitz).
 
 ## [2.2.1] - 2018-06-10
 

@@ -12,5 +12,6 @@ For some background into the topic of using Babel to remove TypeScript type anno
 
 - http://artsy.github.io/blog/2017/11/27/Babel-7-and-TypeScript/
 - https://babeljs.io/blog/2017/09/12/planning-for-7.0
+- https://iamturns.com/typescript-babel/
 
 The preset `@babel/preset-typescript` is not included in this package at this time. Once react-scripts v2 and Babel 7 officially release, this choice will be revisited. What this means is that you can expect to see missing peer dependency warnings for @babel/core.

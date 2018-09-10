@@ -18,6 +18,7 @@ Install the following packages:
 
 - react-app-rewired@next
 - react-app-rewire-typescript-babel-preset
+- @babel/preset-typescript
 - @types/react
 - @types/react-dom
 - @types/jest
@@ -28,13 +29,13 @@ is needed to properly support `react-scripts` v2.
 #### NPM
 
 ```shell
-npm install --save-dev react-app-rewired@next react-app-rewire-typescript-babel-preset @types/react @types/react-dom @types/jest
+npm install --save-dev react-app-rewired@next react-app-rewire-typescript-babel-preset @babel/preset-typescript @types/react @types/react-dom @types/jest
 ```
 
 #### Yarn
 
 ```shell
-yarn add --dev react-app-rewired@next react-app-rewire-typescript-babel-preset @types/react @types/react-dom @types/jest
+yarn add --dev react-app-rewired@next react-app-rewire-typescript-babel-preset @babel/preset-typescript @types/react @types/react-dom @types/jest
 ```
 
 ## TSLint

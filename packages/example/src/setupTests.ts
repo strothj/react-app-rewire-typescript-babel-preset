@@ -9,3 +9,11 @@
 // Create React App instructions.
 
 document.setupTestsTest = "test";
+
+export {};
+
+declare global {
+  interface Document {
+    setupTestsTest: string;
+  }
+}

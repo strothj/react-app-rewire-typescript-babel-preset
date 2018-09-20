@@ -5,9 +5,7 @@
     "moduleResolution": "node",
     "lib": ["es2017", "dom"],
     "jsx": "react",
-    "baseUrl": "./src",
     "noEmit": true,
-    "skipLibCheck": true,
     "pretty": true,
     "strict": true,
     "noUnusedLocals": true,
@@ -15,5 +13,6 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "isolatedModules": true
-  }
+  },
+  "include": ["src/**/*", "type-definitions/**/*"]
 }

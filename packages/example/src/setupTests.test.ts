@@ -5,3 +5,11 @@
 test("rewire uses TypeScript extension for setupTests Jest file", () => {
   expect(document.setupTestsTest).toBe("test");
 });
+
+export {};
+
+declare global {
+  interface Document {
+    setupTestsTest: string;
+  }
+}

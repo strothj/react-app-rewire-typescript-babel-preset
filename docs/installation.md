@@ -107,11 +107,10 @@ The following type definition can be used to support this.
 declare module "*.svg" {
   import * as React from "react";
 
-  const value: string;
-  const ReactComponent: React.StatelessComponent<React.SVGAttributes>;
+  export const ReactComponent: React.SFC<React.SVGProps<SVGSVGElement>>;
 
-  export default value;
-  export { ReactComponent };
+  const src: string;
+  export default src;
 }
 ```
 
@@ -127,7 +126,6 @@ declare module "*.svg" {
     "jsx": "react",
     "baseUrl": "./src",
     "noEmit": true,
-    "skipLibCheck": true,
     "pretty": true,
     "strict": true,
     "noUnusedLocals": true,

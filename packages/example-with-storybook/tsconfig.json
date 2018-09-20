@@ -7,7 +7,6 @@
     "jsx": "react",
     "baseUrl": "./src",
     "noEmit": true,
-    "skipLibCheck": true,
     "pretty": true,
     "strict": true,
     "noUnusedLocals": true,

@@ -133,12 +133,18 @@ declare module "*.svg" {
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "isolatedModules": true
   }
 }
 ```
 
 ?> Notice that the `noEmit` compiler option is used. This is optional but recommended because the TypeScript compiler (tsc) is never used. You can add a package.json script to perform a type check over your code.
+
+?> The `isolatedModules` option is used so that TypeScript can call out constructs which currently give Babel trouble. Things, like re-exporting interfaces, can lead to Webpack compiler errors.  
+See:  
+https://github.com/strothj/react-app-rewire-typescript-babel-preset/issues/15
+https://blogs.msdn.microsoft.com/typescript/2018/08/27/typescript-and-babel-7/
 
 ## Type Checking
 
@@ -178,9 +184,7 @@ You can ensure this config only targets the "test" environment:
 {
   "env": {
     "test": {
-      "plugins": [
-        "emotion"
-      ]
+      "plugins": ["emotion"]
     }
   }
 }

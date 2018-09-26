@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.5.0] - 2018-09-26
+
+### Added
+
+- Support for `react-scripts@2.0.0-next.fb6e6f70` [PR #25](https://github.com/strothj/react-app-rewire-typescript-babel-preset/pull/25)
+
 ## [2.4.0] - 2018-08-27
 
 ### Added

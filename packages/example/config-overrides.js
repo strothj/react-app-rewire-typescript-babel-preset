@@ -11,7 +11,7 @@ const {
 module.exports = {
   webpack: function(config, env) {
     config = rewireTypescript(config);
-    config = rewireTSLint(config);
+    // config = rewireTSLint(config);
 
     return config;
   },

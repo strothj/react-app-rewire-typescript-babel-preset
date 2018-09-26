@@ -24,10 +24,10 @@
   "dependencies": {
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "react-scripts": "2.0.0-next.a671462c"
+    "react-scripts": "2.0.0-next.fb6e6f70"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "7.0.0-beta.46",
+    "@babel/preset-typescript": "7.1.0",
     "@types/jest": "^23.0.0",
     "@types/react": "^16.4.14",
     "@types/react-dom": "^16.0.7",

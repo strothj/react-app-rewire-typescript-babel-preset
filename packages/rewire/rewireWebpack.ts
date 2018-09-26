@@ -1,7 +1,7 @@
 import path from "path";
 import * as webpack from "webpack";
 import reactScriptsPaths from "react-scripts/config/paths";
-import { getBabelLoader, getLoader, Matcher } from "react-app-rewired";
+import { getLoader, Matcher } from "react-app-rewired";
 import { getValidatedConfig } from "./webpackUtils";
 
 // Switch out the entry point index.js for index.tsx.
@@ -40,7 +40,11 @@ export default function(c: webpack.Configuration): webpack.Configuration {
 
   // Replace the babel-preset-react-app preset with the preset rewire from this
   // package. This is done so @babel/preset-flow can be removed.
-  const babelLoader = getBabelLoader(config.module.rules) as webpack.NewLoader;
+  // const babelLoader = getBabelLoader(config.module.rules) as webpack.NewLoader;
+  const babelLoader = getLoader(
+    scriptLoader.use as webpack.RuleSetRule[],
+    babelLoaderMatcher
+  ) as webpack.NewLoader;
   if (!babelLoader || !babelLoader.options)
     throw new Error("Unable to locate Babel loader.");
   babelLoader.options.presets = [path.resolve(__dirname, "rewirePreset")];
@@ -102,6 +106,13 @@ const scriptsLoaderMatcher: Matcher = rule =>
             // customization support in babel-loader.
             /babel-preset-react-app.loader/.test(r.loader))
       )
+  );
+
+const babelLoaderMatcher: Matcher = rule =>
+  Boolean(
+    typeof rule.loader === "string" &&
+      (/babel-loader/.test(rule.loader) ||
+        /babel-preset-react-app.loader/.test(rule.loader))
   );
 
 // The SVG loader will also need adjusting due to its use of the same preset as

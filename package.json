@@ -15,9 +15,6 @@
     "clean",
     "build"
   ],
-  "engines": {
-    "node": ">= 8.9"
-  },
   "devDependencies": {
     "docsify-cli": "^4.2.1",
     "pre-commit": "^1.2.2",

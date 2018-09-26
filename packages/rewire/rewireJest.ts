@@ -19,18 +19,36 @@ const rewireJest = (config: any) => {
     if (Array.isArray(setting)) {
       // Replace file extensions in setting arrays.
       for (let j = 0; j < setting.length; j += 1) {
-        setting[j] = setting[j].replace("js,jsx,mjs", "ts,tsx,js,jsx,mjs");
-        setting[j] = setting[j].replace("js|jsx|mjs", "ts|tsx|js|jsx|mjs");
+        setting[j] = replaceFirstMatch(setting[j], [
+          // TODO: Remove this after beta. Special handling for
+          // pre-2.0.0-next.fb6e6f70. JavaScript modules were supported in prior
+          // versions, so we need to take the additional file extension into
+          // account.
+          { searchValue: "js,jsx,mjs", replaceValue: "ts,tsx,js,jsx,mjs" },
+          { searchValue: "js,jsx", replaceValue: "ts,tsx,js,jsx" }
+        ]);
+        setting[j] = replaceFirstMatch(setting[j], [
+          // TODO: Remove this after beta. Special handling for
+          // pre-2.0.0-next.fb6e6f70. JavaScript modules were supported in prior
+          // versions, so we need to take the additional file extension into
+          // account.
+          { searchValue: "js|jsx|mjs", replaceValue: "ts|tsx|js|jsx|mjs" },
+          { searchValue: "js|jsx", replaceValue: "ts|tsx|js|jsx" }
+        ]);
       }
     } else if (typeof setting === "object") {
       // Replace file extensions in keys of setting dictionaries.
       const settingObj = {};
 
       Object.keys(setting).forEach(settingObjKey => {
-        const newSettingsObjKey = settingObjKey.replace(
-          "js|jsx|mjs",
-          "ts|tsx|js|jsx|mjs"
-        );
+        const newSettingsObjKey = replaceFirstMatch(settingObjKey, [
+          // TODO: Remove this after beta. Special handling for
+          // pre-2.0.0-next.fb6e6f70. JavaScript modules were supported in prior
+          // versions, so we need to take the additional file extension into
+          // account.
+          { searchValue: "js|jsx|mjs", replaceValue: "ts|tsx|js|jsx|mjs" },
+          { searchValue: "js|jsx", replaceValue: "ts|tsx|js|jsx" }
+        ]);
         const newSettingValue = replaceBabelTransform(setting[settingObjKey]);
         // @ts-ignore
         settingObj[newSettingsObjKey] = newSettingValue;
@@ -80,6 +98,25 @@ function rewireSetupTestFrameworkScriptFile(config: object): object {
     ...config,
     setupTestFrameworkScriptFile: setupTestsFile
   };
+}
+
+/**
+ * Perform a String.replace on the target string. Return the first change or the
+ * original value if no changes occurred.
+ *
+ * @param str Target string
+ * @param replacements Series of string replacements to attempt
+ */
+function replaceFirstMatch(
+  str: string,
+  replacements: { searchValue: string; replaceValue: string }[]
+): string {
+  let newValue: string;
+  for (const replacement of replacements) {
+    newValue = str.replace(replacement.searchValue, replacement.replaceValue);
+    if (newValue !== str) return newValue;
+  }
+  return str;
 }
 
 export default rewireJest;

@@ -17,8 +17,8 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^10.3.2",
-    "@types/webpack": "^4.4.0"
+    "@types/node": "^10.11.3",
+    "@types/webpack": "^4.4.13"
   },
   "peerDependencies": {
     "react-app-rewired": "^2.0.0"

@@ -38,10 +38,10 @@ export default function(
 const esLintLoaderMatcher: Matcher = rule =>
   Boolean(
     rule.test &&
-      // TODO: Remove the rule regex test that includes the JavaScript modules
-      // extension. Versions prior to 2.0.0-next.fb6e6f70 included support for
-      // JavaScript modules.
-      (rule.test.toString() === /\.(js|jsx|mjs)$/.toString() ||
+      // 2.0.4
+      // // https://github.com/facebook/create-react-app/commit/736561fa8b368daf27bc26646b10b8511e9d63a9
+      (rule.test.toString() === /\.(js|mjs|jsx)$/.toString() ||
+        // 2.0.2, 2.0.3
         rule.test.toString() === /\.(js|jsx)$/.toString()) &&
       Array.isArray(rule.use) &&
       rule.use.find((r: any) => r.loader && /eslint-loader/.test(r.loader))

@@ -22,7 +22,7 @@ export default function(c: webpack.Configuration): webpack.Configuration {
   // add TypeScript file extensions.
   const scriptLoader = getLoader(config.module.rules, scriptsLoaderMatcher);
   if (!scriptLoader) throw new Error("Unable to locate scripts loader.");
-  scriptLoader.test = /\.(ts|tsx|js|jsx)$/;
+  scriptLoader.test = /\.(ts|tsx|js|mjs|jsx)$/;
 
   // Replace the babel-preset-react-app preset with the preset rewire from this
   // package. This is done so @babel/preset-flow can be removed.
@@ -40,7 +40,11 @@ export default function(c: webpack.Configuration): webpack.Configuration {
 const scriptsLoaderMatcher: Matcher = rule => {
   return Boolean(
     rule.test &&
-      rule.test.toString() === /\.(js|jsx)$/.toString() &&
+      // 2.0.2, 2.0.3
+      (rule.test.toString() === /\.(js|jsx)$/.toString() ||
+        // 2.0.4
+        // https://github.com/facebook/create-react-app/commit/736561fa8b368daf27bc26646b10b8511e9d63a9
+        rule.test.toString() === /\.(js|mjs|jsx)$/.toString()) &&
       rule.enforce !== "pre" &&
       typeof rule.loader === "string" &&
       /babel-loader/.test(rule.loader)

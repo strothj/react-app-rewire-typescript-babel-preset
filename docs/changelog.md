@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.0.0] - 2018-10-05
+
+- Support for `react-scripts@2.0.2`, `react-scripts@2.0.3`, `react-scripts@2.0.4`. [PR #28](https://github.com/strothj/react-app-rewire-typescript-babel-preset/pull/28) (thanks @Corjen).
+
 ## [2.5.0] - 2018-09-26
 
 ### Added

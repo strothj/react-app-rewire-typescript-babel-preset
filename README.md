@@ -11,6 +11,13 @@ It uses the Babel preset [@babel/preset-typescript][babel-preset] as an alternat
 
 [Changelog](docs/changelog.md)
 
+## Versions
+
+| react-scripts | react-app-rewire-typescript-babel-preset |
+| ------------- | ---------------------------------------- |
+| beta          | 2                                        |
+| release       | 3                                        |
+
 ## Documentation
 
 Please see the full documentation here: https://react-app-rewire-typescript-babel-preset.netlify.com

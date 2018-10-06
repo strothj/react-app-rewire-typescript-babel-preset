@@ -55,12 +55,6 @@ function createBabelConfig(env) {
           modules: process.env.NODE_ENV === "test" ? "commonjs" : false
         }
       ],
-      [
-        require.resolve("@babel/preset-stage-0"),
-        {
-          decoratorsLegacy: true
-        }
-      ],
       require.resolve("@babel/preset-react"),
       require.resolve("@babel/preset-typescript")
       // FIXME: Causing a build error like, need to resolve and re-enable:
@@ -79,12 +73,17 @@ function createBabelConfig(env) {
           }
         }
       ],
+      [
+        require.resolve("@babel/plugin-proposal-class-properties"),
+        {
+          loose: true
+        }
+      ],
       require.resolve("@babel/plugin-transform-regenerator"),
       [
         require.resolve("@babel/plugin-transform-runtime"),
         {
           helpers: true,
-          polyfill: true,
           regenerator: true
         }
       ]

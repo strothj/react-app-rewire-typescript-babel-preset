@@ -1,6 +1,11 @@
-# react-app-rewire-typescript-babel-preset
+## NOTICE: Create React App adds TypeScript Support
 
-[![Circle CI][circle-status]][circle-link]
+**The official Create React App project looks to be adding support for the features this package enabled. With some patience, you'll be able to use TypeScript with Create React App out of the box.**
+
+Details are available here:  
+https://github.com/strothj/react-app-rewire-typescript-babel-preset/issues/30
+
+# react-app-rewire-typescript-babel-preset
 
 > Add TypeScript support to Create React App using @babel/preset-typescript.
 

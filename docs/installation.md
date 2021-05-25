@@ -68,7 +68,7 @@ Create a `config-overrides.js` file in the root of your project. This file tells
 ```js
 const {
   rewireWebpack: rewireTypescript,
-  rewireJest: rewireTypescriptJest
+  rewireJest: rewireTypescriptJest,
   rewireTSLint // Optional, needed if using the TSLint integration.
 } = require("react-app-rewire-typescript-babel-preset");
 
